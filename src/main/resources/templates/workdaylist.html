@@ -19,6 +19,7 @@
 		<tr>
 		    <th>Työvuoron alku</th>
 		    <th>Työvuoron loppu</th>
+		    <th>Tunnit yhteensä</th>
 		    <th>Auto</th>
 		    <th>Paulig</th>
 		    <th>Fazer</th>
@@ -34,6 +35,7 @@
     	<tr th:each = "workday : ${workdays}">
     		<td th:text="${#dates.format(workday.beginDate, 'dd.MM.yyyy HH:mm')}"></td>
     		<td th:text="${#dates.format(workday.endDate, 'dd.MM.yyyy HH:mm')}"></td>
+    		<td th:text="${T(hh.palvelinohjelmointi.domain.UtilityClass).getDifferenceInHours(workday.beginDate, workday.endDate)}"></td>
        		<td th:text="${workday.vehicle.regNo}"></td>
     		<td th:text="${workday.pauligAmount}"></td>
     		<td th:text="${workday.fazerAmount}"></td>
@@ -47,6 +49,6 @@
  			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${workday.id})}">Edit</a></td>    	
     	</tr>
      </table>
-	 <a href="/add" class="btn btn-success">Add Workday</a>    	
+	 <a href="/addworkday" class="btn btn-success">Add Workday</a>    	
 </body>
 </html>

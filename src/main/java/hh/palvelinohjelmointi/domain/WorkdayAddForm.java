@@ -2,31 +2,30 @@ package hh.palvelinohjelmointi.domain;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-public class Workday {
+public class WorkdayAddForm {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     
+    @PastOrPresent(message="Lopetusaika ei voiolla tulevaisuudessa.") // Checks that Date is either in the past or present
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    @PastOrPresent // Checks that Date is either in the past or present
     private Date beginDate; // Begin date of workday
     
+    @PastOrPresent(message="Lopetusaika ei voi olla tulevaisuudessa.") // Checks that Date is either in the past or present
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    @PastOrPresent
     private Date endDate; // end date of workday
 	
     private Date dateAdded = new Date();
@@ -49,25 +48,6 @@ public class Workday {
     @JoinColumn(name = "vehicleid")
 	private Vehicle vehicle;
     
-    public Workday() {}
-    
-	public Workday(Date beginDate, Date endDate, Date dateAdded, int pauligAmount, int fazerAmount, int mercaAmount,
-			int pahvitAmount, int akaaAmount, int keskoAmount, int otherAmount, String otherInfo, User employee, Vehicle vehicle ) {
-		super();
-		this.beginDate = beginDate;
-		this.endDate = endDate;
-		this.dateAdded = dateAdded;
-		this.pauligAmount = pauligAmount;
-		this.fazerAmount = fazerAmount;
-		this.mercaAmount = mercaAmount;
-		this.pahvitAmount = pahvitAmount;
-		this.akaaAmount = akaaAmount;
-		this.keskoAmount = keskoAmount;
-		this.otherAmount = otherAmount;
-		this.otherInfo = otherInfo;
-		this.employee = employee;
-		this.vehicle = vehicle;
-	}
 		
 	public Long getId() {
 		return id;
@@ -179,15 +159,6 @@ public class Workday {
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle ;
 	}
-
-	@Override
-	public String toString() {
-		return "Workday [id=" + id + ", beginDate=" + beginDate + ", endDate=" + endDate + ", dateAdded=" + dateAdded
-				+ ", pauligAmount=" + pauligAmount + ", fazerAmount=" + fazerAmount + ", mercaAmount=" + mercaAmount
-				+ ", pahvitAmount=" + pahvitAmount + ", akaaAmount=" + akaaAmount + ", keskoAmount=" + keskoAmount
-				+ ", otherInfo=" + otherInfo + ", employee=" + employee + ", vehicle=" + vehicle  + "]";
-	}  
-
     
-
+    
 }

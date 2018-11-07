@@ -37,19 +37,19 @@ public class WorkdayController {
         return "workdaylist";
     }
   
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @RequestMapping(value = "/add")
-    public String addBook(Model model){
-    	model.addAttribute("workday", new Workday());
-    	model.addAttribute("vehicles", vehicleRepository.findAll());
-        return "addworkday";
-    }     
+    //@PreAuthorize("hasAuthority('ADMIN')")
+    //@RequestMapping(value = "/add")
+    //public String addWorkday(Model model){
+    //	model.addAttribute("workday", new Workday());
+    //	model.addAttribute("vehicles", vehicleRepository.findAll());
+    //    return "addworkday";
+    //}     
     
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveBook(Workday workday){
-    	workdayRepository.save(workday);
-        return "redirect:workdaylist";
-    }
+    //@RequestMapping(value = "/save", method = RequestMethod.POST)
+    //public String saveWorkday(Workday workday){
+    //	workdayRepository.save(workday);
+    //    return "redirect:workdaylist";
+    //}
     
       // REST
       @RequestMapping(value="/workdays", method = RequestMethod.GET)
@@ -59,19 +59,19 @@ public class WorkdayController {
 
       // REST
      @RequestMapping(value="/workday/{id}", method = RequestMethod.GET)
-     public @ResponseBody Optional<Workday> findBookRest(@PathVariable("id") Long workdayId) {	
+     public @ResponseBody Optional<Workday> findWorkdayRest(@PathVariable("id") Long workdayId) {	
     	return workdayRepository.findById(workdayId);
     }
       
 	@RequestMapping (value="/edit/{id}")
-	public String editBook(@PathVariable("id") Long workdayId,Model model){
+	public String editWorkday(@PathVariable("id") Long workdayId,Model model){
 		model.addAttribute("workday", workdayRepository.findById(workdayId));
 		return "editworkday";
 	}
 	
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteBook(@PathVariable("id") Long workdayId, Model model) {
+    public String deleteWorkday(@PathVariable("id") Long workdayId, Model model) {
     	workdayRepository.deleteById(workdayId);
         return "redirect:../workdaylist";
     }     

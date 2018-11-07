@@ -9,4 +9,5 @@ public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
 
     List<Vehicle> findByMake(String make);
     Vehicle findByRegNo(String regNo);
+    Vehicle findByVehicleid(long vehicleid);
 }
