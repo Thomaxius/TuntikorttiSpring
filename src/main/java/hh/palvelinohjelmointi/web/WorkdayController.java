@@ -22,7 +22,7 @@ public class WorkdayController {
 	private WorkdayRepository workdayRepository;
 	
 	@Autowired
-	private VehicleRepository Repository;
+	private VehicleRepository vehicleRepository;
 	
 	
 	// Login page
@@ -41,7 +41,7 @@ public class WorkdayController {
     @RequestMapping(value = "/add")
     public String addBook(Model model){
     	model.addAttribute("workday", new Workday());
-    	model.addAttribute("categories", Repository.findAll());
+    	model.addAttribute("vehicles", vehicleRepository.findAll());
         return "addworkday";
     }     
     

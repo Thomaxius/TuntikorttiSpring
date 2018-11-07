@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -16,7 +18,10 @@ public class Workday {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+    
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date beginDate; // Begin date of workday
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date endDate; // end date of workday
 	private Date dateAdded = new Date();
 	private int pauligAmount;
@@ -25,6 +30,7 @@ public class Workday {
 	private int pahvitAmount;
 	private int akaaAmount;
 	private int keskoAmount;
+	private int otherAmount;
 	private String otherInfo;
 	
     @ManyToOne
@@ -40,7 +46,7 @@ public class Workday {
     public Workday() {}
     
 	public Workday(Date beginDate, Date endDate, Date dateAdded, int pauligAmount, int fazerAmount, int mercaAmount,
-			int pahvitAmount, int akaaAmount, int keskoAmount, String otherInfo, User employee, Vehicle vehicle ) {
+			int pahvitAmount, int akaaAmount, int keskoAmount, int otherAmount, String otherInfo, User employee, Vehicle vehicle ) {
 		super();
 		this.beginDate = beginDate;
 		this.endDate = endDate;
@@ -51,6 +57,7 @@ public class Workday {
 		this.pahvitAmount = pahvitAmount;
 		this.akaaAmount = akaaAmount;
 		this.keskoAmount = keskoAmount;
+		this.otherAmount = otherAmount;
 		this.otherInfo = otherInfo;
 		this.employee = employee;
 		this.vehicle = vehicle;
@@ -136,6 +143,13 @@ public class Workday {
 		this.keskoAmount = keskoAmount;
 	}
 
+	public int getOtherAmount() {
+		return otherAmount;
+	}
+
+	public void setOtherAmount(int otherAmount) {
+		this.otherAmount = otherAmount;
+	}
 	public String getOtherInfo() {
 		return otherInfo;
 	}

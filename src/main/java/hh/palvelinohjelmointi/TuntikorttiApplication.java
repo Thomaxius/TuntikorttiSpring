@@ -34,7 +34,7 @@ public class TuntikorttiApplication {
 			vehicleRepository.save(new Vehicle("Volvo", "FH-16", "ABC-123"));
 			vehicleRepository.save(new Vehicle("Volvo", "FH-14", "BCA-123"));
 			
-			workdayRepository.save(new Workday(new Date(), new Date(), new Date(), 1, 2, 1, 0, 0 , 1, "Otherinfo", null, vehicleRepository.findByMake("Volvo").get(0)));
+			workdayRepository.save(new Workday(new Date(), new Date(), new Date(), 1, 2, 1, 0, 0 , 1, 0, "Otherinfo", null, vehicleRepository.findByMake("Volvo").get(0)));
 
 			
 			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER", "admin@tuntikortti.com");
