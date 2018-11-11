@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
@@ -22,10 +23,12 @@ public class WorkdayAddForm {
     
     @PastOrPresent(message="Lopetusaika ei voiolla tulevaisuudessa.") // Checks that Date is either in the past or present
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @NotNull(message="Aloitusaika ei voi olla tyhjä.")
     private Date beginDate; // Begin date of workday
     
     @PastOrPresent(message="Lopetusaika ei voi olla tulevaisuudessa.") // Checks that Date is either in the past or present
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @NotNull(message="Lopetusaika ei voi olla tyhjä.")
     private Date endDate; // end date of workday
 	
     private Date dateAdded = new Date();

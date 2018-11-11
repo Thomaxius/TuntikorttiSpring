@@ -84,7 +84,7 @@ public class Vehicle {
 	@Override
 	public String toString() {
 		return "Vehicle [id=" + vehicleid + ", Make=" + make + ", Model=" + model
-				+ ", RegNo=" + regNo + ", workdays=" + workdays + "]";
+				+ ", RegNo=" + regNo;
 	}
 }
 

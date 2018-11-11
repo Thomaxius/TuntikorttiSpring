@@ -10,10 +10,11 @@
 	<h1>Add workday</h1>
 	<div>
 
-		<form th:object="${workdayaddform}" th:action="@{/saveworkday}" action="#" method="post">
+		<form th:object="${workdayaddform}" th:action="@{/addworkday}" action="#" method="post">
 		  	<label for="beginDate">Työpäivän aloitus</label>
 			<input type="datetime-local" id="beginDate" th:field="*{beginDate}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<font color="red"><p th:if="${#fields.hasErrors('beginDate')}" th:errors="*{beginDate}"></p></font>					
 		  	<label for="endDate">Työpäivän lopetus</label>	
 			<input type="datetime-local" id="endDate" th:field="*{endDate}" />
 		  	<font color="red"><p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p></font>			
@@ -41,7 +42,8 @@
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	<label for="other_info">Muut kuormat selite</label>
 			<input type="text" id="other_info" th:field="*{otherInfo}" />
-			<label for="vehicleList">Vehicle</label>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="vehicleList">Auto</label>
 			 <select id="vehicleList" th:field="*{vehicle}" class="form-control">
        			<option th:each="vehicle: ${vehicles}" th:value="${vehicle.vehicleid}" th:text="${vehicle.regNo}"></option>
     		</select>					

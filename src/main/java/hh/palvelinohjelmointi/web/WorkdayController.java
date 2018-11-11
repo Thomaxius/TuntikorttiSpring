@@ -36,21 +36,7 @@ public class WorkdayController {
         model.addAttribute("workdays", workdayRepository.findAll());
         return "workdaylist";
     }
-  
-    //@PreAuthorize("hasAuthority('ADMIN')")
-    //@RequestMapping(value = "/add")
-    //public String addWorkday(Model model){
-    //	model.addAttribute("workday", new Workday());
-    //	model.addAttribute("vehicles", vehicleRepository.findAll());
-    //    return "addworkday";
-    //}     
-    
-    //@RequestMapping(value = "/save", method = RequestMethod.POST)
-    //public String saveWorkday(Workday workday){
-    //	workdayRepository.save(workday);
-    //    return "redirect:workdaylist";
-    //}
-    
+      
       // REST
       @RequestMapping(value="/workdays", method = RequestMethod.GET)
       public @ResponseBody List<Workday> workdayListRest() {	

@@ -10,4 +10,13 @@ public class UtilityClass {
 		return f.format((((date2.getTime() - date1.getTime()) / 1000.0) / 60) / 60).replace(',', '.');
 	}
 	
+	public static void getTotal(Object object) {
+		System.out.println(object);
+	}
+	
+	// Check if date is before another
+	public static boolean dateIsAfterDate(Date date1, Date date2) {
+		return date1.before(date2);
+	}
+	
 }
