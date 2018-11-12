@@ -22,6 +22,7 @@ public class UserController {
 	
     @RequestMapping(value = "signup")
     public String addUser(Model model){
+    	System.out.println("we are here");
     	model.addAttribute("signupform", new SignupForm());
         return "signup";
     }	

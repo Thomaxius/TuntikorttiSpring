@@ -36,6 +36,14 @@
 
 	</div>
 
+<<<<<<< HEAD
+=======
+						
+
+			
+			
+	<h3 th:inline="text">Welcome, [[${#httpServletRequest.remoteUser}]]</h3>
+>>>>>>> branch 'master' of http://github.com/Thomaxius/TuntikorttiSpring
     <table id="workdaysTable" class="table table-striped">
 		<tr>
 		    <th>Työvuoron alku</th>
@@ -75,6 +83,7 @@
     	<th>Yhteensä:</th>
     	<th id="totalHourCell"></th>
     	<th></th>
+<<<<<<< HEAD
     	<td class="bold" id="totalPauligCell"></td>
     	<td class="bold" id="totalFazerCell"></td>
     	<td class="bold" id="totalMercaCell"></td>
@@ -131,5 +140,60 @@
 			addTableRow("workdaysTable", totalObj	)
 			</script>
 	 
+=======
+    	<th id="totalPauligCell"></th>
+    	<th id="totalFazerCell"></th>
+    	<th id="totalMercaCell"></th>
+    	<th id="totalPahvitCell"></th>
+     	<th id="totalAkaaCell"></th>
+    	<th id="totalKeskoCell"></th>
+    	<th id="totalOtherCell"></th>
+     	<td></td>
+    	<td></td>
+    	<td></td>
+    	<td></td>    	   	
+    	</tr>
+
+     </table>
+     
+     			<script th:inline="javascript">
+     			
+			function getTotals( obj ) { // Laskeekaikkien päivien työtehtävät yhteen
+				let sum = 0;
+				let tds = document.getElementById("workdaysTable").getElementsByClassName('hourColumn');
+				for(let i=0;i<tds.length;i++){
+					sum += isNaN(tds[i].innerText) ? 0 : parseFloat(tds[i].innerText);
+				}
+				return {
+					totalHours: sum,
+					totalPaulig: obj.reduce((acc, val) => acc + val.pauligAmount, 0),
+					totalFazer: obj.reduce((acc, val) => acc + val.fazerAmount, 0),
+					totalMerca: obj.reduce((acc, val) => acc + val.mercaAmount, 0), 
+					totalPahvit: obj.reduce((acc, val) => acc + val.pahvitAmount, 0), 
+					totalAkaa: obj.reduce((acc, val) => acc + val.akaaAmount, 0), 
+					totalKesko: obj.reduce((acc, val) => acc + val.keskoAmount, 0), 
+					totalOther: obj.reduce((acc, val) => acc + val.otherAmount, 0), 	
+				}
+			}
+			
+			function addTableRow(tableName, obj) { // Lisää tauluun viimeisen rivin, joka näyttää koko kuukauden kaikki työtehtävät ja tunnit summattuna
+				let rows = document.getElementById(tableName).rows
+				let row = rows.namedItem("totalRow")
+				row.cells.namedItem("totalHourCell").innerHTML = obj.totalHours + 'h'
+				row.cells.namedItem("totalPauligCell").innerHTML = obj.totalPaulig
+				row.cells.namedItem("totalFazerCell").innerHTML = obj.totalFazer
+				row.cells.namedItem("totalMercaCell").innerHTML = obj.totalMerca
+				row.cells.namedItem("totalPahvitCell").innerHTML = obj.totalPahvit
+				row.cells.namedItem("totalAkaaCell").innerHTML = obj.totalAkaa
+				row.cells.namedItem("totalKeskoCell").innerHTML = obj.totalKesko
+				row.cells.namedItem("totalOtherCell").innerHTML = obj.totalOther
+				
+			}
+			
+			const totalObj = getTotals([[${workdays}]])
+			addTableRow("workdaysTable", totalObj	)
+			</script>
+	 <a href="/addworkday" class="btn btn-success">Add Workday</a>    	
+>>>>>>> branch 'master' of http://github.com/Thomaxius/TuntikorttiSpring
 </body>
 </html>
