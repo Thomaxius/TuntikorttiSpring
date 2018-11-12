@@ -7,10 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,10 +20,12 @@ public class WorkdayAddForm {
     
     @PastOrPresent(message="Lopetusaika ei voiolla tulevaisuudessa.") // Checks that Date is either in the past or present
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @NotNull(message="Aloitusaika ei voi olla tyhjä.")
     private Date beginDate; // Begin date of workday
     
     @PastOrPresent(message="Lopetusaika ei voi olla tulevaisuudessa.") // Checks that Date is either in the past or present
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @NotNull(message="Lopetusaika ei voi olla tyhjä.")
     private Date endDate; // end date of workday
 	
     private Date dateAdded = new Date();
@@ -48,7 +48,30 @@ public class WorkdayAddForm {
     @JoinColumn(name = "vehicleid")
 	private Vehicle vehicle;
     
-		
+	public WorkdayAddForm() {}
+    
+	public WorkdayAddForm(Long id,
+			@PastOrPresent(message = "Lopetusaika ei voiolla tulevaisuudessa.") @NotNull(message = "Aloitusaika ei voi olla tyhjä.") Date beginDate,
+			@PastOrPresent(message = "Lopetusaika ei voi olla tulevaisuudessa.") @NotNull(message = "Lopetusaika ei voi olla tyhjä.") Date endDate,
+			Date dateAdded, int pauligAmount, int fazerAmount, int mercaAmount, int pahvitAmount, int akaaAmount,
+			int keskoAmount, int otherAmount, String otherInfo, User employee, Vehicle vehicle) {
+		super();
+		this.id = id;
+		this.beginDate = beginDate;
+		this.endDate = endDate;
+		this.dateAdded = dateAdded;
+		this.pauligAmount = pauligAmount;
+		this.fazerAmount = fazerAmount;
+		this.mercaAmount = mercaAmount;
+		this.pahvitAmount = pahvitAmount;
+		this.akaaAmount = akaaAmount;
+		this.keskoAmount = keskoAmount;
+		this.otherAmount = otherAmount;
+		this.otherInfo = otherInfo;
+		this.employee = employee;
+		this.vehicle = vehicle;
+	}
+
 	public Long getId() {
 		return id;
 	} 

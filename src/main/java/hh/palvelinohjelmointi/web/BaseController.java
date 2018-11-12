@@ -17,40 +17,31 @@ import hh.palvelinohjelmointi.domain.Workday;
 import hh.palvelinohjelmointi.domain.WorkdayRepository;
 
 @Controller
-public class WorkdayController {
+public class BaseController {
 	@Autowired
 	private WorkdayRepository workdayRepository;
-	
+
 	@Autowired
 	private VehicleRepository vehicleRepository;
-	
 	
 	// Login page
     @RequestMapping(value="/login")
     public String login() {	
         return "login";
     }	
-	
+
+    
     @RequestMapping(value="/workdaylist")
     public String workdayList(Model model) {	
         model.addAttribute("workdays", workdayRepository.findAll());
         return "workdaylist";
     }
-  
-    //@PreAuthorize("hasAuthority('ADMIN')")
-    //@RequestMapping(value = "/add")
-    //public String addWorkday(Model model){
-    //	model.addAttribute("workday", new Workday());
-    //	model.addAttribute("vehicles", vehicleRepository.findAll());
-    //    return "addworkday";
-    //}     
     
-    //@RequestMapping(value = "/save", method = RequestMethod.POST)
-    //public String saveWorkday(Workday workday){
-    //	workdayRepository.save(workday);
-    //    return "redirect:workdaylist";
-    //}
-    
+    @RequestMapping(value="/vehiclelist")
+    public String vehicleList(Model model) {	
+        model.addAttribute("vehicles", vehicleRepository.findAll());
+        return "vehiclelist";
+    }      
       // REST
       @RequestMapping(value="/workdays", method = RequestMethod.GET)
       public @ResponseBody List<Workday> workdayListRest() {	
@@ -62,12 +53,7 @@ public class WorkdayController {
      public @ResponseBody Optional<Workday> findWorkdayRest(@PathVariable("id") Long workdayId) {	
     	return workdayRepository.findById(workdayId);
     }
-      
-	@RequestMapping (value="/edit/{id}")
-	public String editWorkday(@PathVariable("id") Long workdayId,Model model){
-		model.addAttribute("workday", workdayRepository.findById(workdayId));
-		return "editworkday";
-	}
+
 	
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

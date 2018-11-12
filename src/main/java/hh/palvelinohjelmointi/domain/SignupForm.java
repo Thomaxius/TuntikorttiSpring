@@ -1,23 +1,23 @@
 package hh.palvelinohjelmointi.domain;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
 
 public class SignupForm {
-    @NotEmpty
-    @Size(min=5)
+	 @NotBlank(message="Anna käyttäjätunnus.")
+    @Size(min=5, message="Salasanan tulee olla vähintään 5 merkkiä pitkä.")
     private String username = "";
 
-    @NotEmpty
-    @Size(min=7)
+    @NotBlank(message="Anna salasana.")
+    @Size(min=7, message="Salasanan tulee olla vähintään 7 merkkiä pitkä.")
     private String password = "";
 
-    @NotEmpty
-    @Size(min=7)
+    @NotBlank(message="Anna salasanavahvistus.")
+    @Size(min=7, message="Salasanan tulee olla vähintään 7 merkkiä pitkä.")
     private String passwordCheck = "";
 
-    @NotEmpty
+    @NotBlank(message="Kenttä ei saa olla tyhjä.")
     private String role = "USER";
 
 	public String getUsername() {

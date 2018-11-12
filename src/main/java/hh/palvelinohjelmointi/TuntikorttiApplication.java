@@ -30,9 +30,9 @@ public class TuntikorttiApplication {
 	@Bean
 	public CommandLineRunner workdayDemo(WorkdayRepository workdayRepository, UserRepository urepository, VehicleRepository vehicleRepository) {
 		return (args) -> {
-			log.info("Saving a couple of workdays and categories..");
-			vehicleRepository.save(new Vehicle("Volvo", "FH-16", "ABC-123"));
-			vehicleRepository.save(new Vehicle("Volvo", "FH-14", "BCA-123"));
+			log.info("Saving a couple of workdays and vehicles..");
+			vehicleRepository.save(new Vehicle("Volvo", "FH-16", "ABC-123", new Date()));
+			vehicleRepository.save(new Vehicle("Volvo", "FH-14", "BCA-123", new Date()));
 			
 			workdayRepository.save(new Workday(new Date(), new Date(), new Date(), 1, 2, 1, 0, 0 , 1, 0, "Otherinfo", null, vehicleRepository.findByMake("Volvo").get(0)));
 

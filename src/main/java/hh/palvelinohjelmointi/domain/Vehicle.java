@@ -1,5 +1,6 @@
 package hh.palvelinohjelmointi.domain;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,16 +19,27 @@ public class Vehicle {
 	public String make;
 	public String model;
 	public String regNo;
+	public Date dateAdded;
 	
 	
-	public Vehicle(String Make, String Model, String RegNo) {
+	public Vehicle(String Make, String Model, String RegNo, Date dateadded) {
 		super();
 		this.make = Make;
 		this.model = Model;
 		this.regNo = RegNo;
+		this.dateAdded = dateadded;
 	}
 	
 	public Vehicle() {}
+
+	public Vehicle(Long id, String make, String model, String regno, Date dateadded) {
+		super();
+		this.vehicleid = id;
+		this.make = make;
+		this.model = model;
+		this.regNo = regno;
+		this.dateAdded = dateadded;
+	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "")
 	private List<Workday> workdays;
@@ -84,7 +96,7 @@ public class Vehicle {
 	@Override
 	public String toString() {
 		return "Vehicle [id=" + vehicleid + ", Make=" + make + ", Model=" + model
-				+ ", RegNo=" + regNo + ", workdays=" + workdays + "]";
+				+ ", RegNo=" + regNo;
 	}
 }
 

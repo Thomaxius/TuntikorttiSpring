@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit workday</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h1>Edit a workday</h1>
+	<div>
+	
+
+		<form th:object="${vehicleform}" th:action="@{/savevehicle}" action="#" method="post">
+			<input type="hidden" th:field="*{id}"/>
+		  	<label for="make">Auton malli</label>
+			<input type="text" id="make" th:field="*{make}" />
+			<font color="red"><p th:if="${#fields.hasErrors('make')}" th:errors="*{make}"></p></font>	
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="model">Auton merkki</label>
+			<input type="text" id="model" th:field="*{model}" />
+			<font color="red"><p th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></p></font>					
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="regNo">Rekisterinumero</label>	
+			<input style="text-transform:uppercase" type="text" id="regNo" th:field="*{regNo}" />
+		  	<font color="red"><p th:if="${#fields.hasErrors('regNo')}" th:errors="*{regNo}"></p></font>							
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+	</div>
+</body>
+</html>
