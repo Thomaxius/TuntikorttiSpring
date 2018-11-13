@@ -30,14 +30,13 @@ public class WorkdayAddController {
 	@Autowired
 	private VehicleRepository vehicleRepository;
 	
-	@RequestMapping(value = "/addworkday", method = RequestMethod.GET)
+	@RequestMapping(value = "addworkday", method = RequestMethod.GET)
 	public String addWorkday(Model model){
 		  if (!model.containsAttribute("workdayaddform")) {
 			    model.addAttribute("vehicles", vehicleRepository.findAll());
-			    WorkdayAddForm workdayaddform = new WorkdayAddForm();
 			    model.addAttribute("workdayaddform",  new WorkdayAddForm());
 			  }
-	    return "/addworkday";
+	    return "addworkday";
 	}   
 
 	@RequestMapping (value="/editworkday/{id}")
