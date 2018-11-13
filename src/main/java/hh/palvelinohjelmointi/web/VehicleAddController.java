@@ -44,7 +44,6 @@ public class VehicleAddController {
 	
     @RequestMapping(value = "addvehicle")
     public String addVehicle(Model model){
-    	System.out.println("we are here");
     	model.addAttribute("vehicleaddform", new VehicleAddForm());
         return "addvehicle";
     }	

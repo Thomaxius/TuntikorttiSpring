@@ -59,7 +59,7 @@ public class WorkdayAddController {
 
 	}  
 	
-	 @RequestMapping(value = "/addworkday")
+	 @RequestMapping(value = "addworkday")
 	    public String save(@Valid WorkdayAddForm workdayaddform, 
 	    		BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 	        if (!bindingResult.hasErrors()) { // validation errors
@@ -71,7 +71,7 @@ public class WorkdayAddController {
 	                bindingResult.rejectValue("beginDate", "err.beginDate", "Aloitusaika ei voi olla lopetusajan jälkeen.");
 	                redirectAttributes.addFlashAttribute("vehicles", vehicleRepository.findAll());
 	                redirectAttributes.addFlashAttribute("workdayaddform", workdayaddform);
-	                return "redirect:/addworkday";    
+	                return "redirect:addworkday";    
 	            }
 		    		Workday workday = new Workday();
 		    		workday.setId(workdayaddform.getId());
@@ -92,7 +92,7 @@ public class WorkdayAddController {
         		redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.workdayaddform", bindingResult);
         		redirectAttributes.addFlashAttribute("vehicles", vehicleRepository.findAll());
                 redirectAttributes.addFlashAttribute("workdayaddform", workdayaddform);
-                return "redirect:/addworkday";    
+                return "redirect:addworkday";    
         	}
         	return "redirect:/workdaylist";    	
         }   
