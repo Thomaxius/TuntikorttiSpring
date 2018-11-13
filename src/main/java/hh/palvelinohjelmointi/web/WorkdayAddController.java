@@ -17,7 +17,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import hh.palvelinohjelmointi.domain.UtilityClass;
-import hh.palvelinohjelmointi.domain.Vehicle;
 import hh.palvelinohjelmointi.domain.VehicleRepository;
 import hh.palvelinohjelmointi.domain.Workday;
 import hh.palvelinohjelmointi.domain.WorkdayAddForm;
@@ -60,7 +59,7 @@ public class WorkdayAddController {
 
 	}  
 	
-	 @RequestMapping(value = "/addworkday", method = RequestMethod.POST)
+	 @RequestMapping(value = "/addworkday")
 	    public String save(@Valid WorkdayAddForm workdayaddform, 
 	    		BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 	        if (!bindingResult.hasErrors()) { // validation errors
@@ -68,7 +67,6 @@ public class WorkdayAddController {
 	            Date workdayEnd = workdayaddform.getEndDate();
 
 	            if (!UtilityClass.dateIsAfterDate(workdayBegin, workdayEnd)) {
-	                // Add the vehicle you want to send to the other method.
 	            	redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.workdayaddform", bindingResult);
 	                bindingResult.rejectValue("beginDate", "err.beginDate", "Aloitusaika ei voi olla lopetusajan jälkeen.");
 	                redirectAttributes.addFlashAttribute("vehicles", vehicleRepository.findAll());
