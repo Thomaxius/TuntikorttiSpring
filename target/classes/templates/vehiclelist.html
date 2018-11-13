@@ -24,8 +24,9 @@
 							</div>
 						</li>	
 				  </ul>
-  					  <ul class="login">
-					    <form th:action="@{/logout}" method="post"><input type="submit" value="Kirjaudu ulos"/></form>
+  					  <ul class="logout">
+					    <form sec:authorize="isAnonymous()" th:action="@{/login}" method="post"><input class="logout" type="submit" value="Kirjaudu sisään"/></form>
+					    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post"><input class="logout" type="submit" value="Kirjaudu ulos"/></form>
 					  </ul>
 				</div>
 			  </div>

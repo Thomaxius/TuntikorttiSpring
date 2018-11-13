@@ -42,10 +42,11 @@ h1 {
     padding-left: 10px;
     padding-right: 10px;
   }
-  
+   
   .header ul > li { float: left; }
   .header ul.navigation { float: left; }
-  .header ul.login { float: right; }
+  .header ul.logout { float: right; }
+  
   li {
     float: left;
 }
@@ -132,7 +133,7 @@ li.dropdown {
       display: inline-block;
   }
 
-    input {
+    input.logout {
       	float: right;
   	text-align: right;
   	padding: 100px;
@@ -210,5 +211,20 @@ table {
   
   tbody tr:hover {
     background-color: #ddd;
+  }
+  
+  p.center-title {
+  	font-size: 30px;
+  	text-align: center;
+  	font-family: sans-serif;
+  }
+  
+   p.center {
+  	text-align: center;
+  	font-family: sans-serif;
+  } 
+  form {
+  	text-align: center;
+  	font-family: sans-serif;
   }
   

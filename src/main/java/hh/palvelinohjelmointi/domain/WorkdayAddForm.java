@@ -9,7 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
+
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,12 +32,19 @@ public class WorkdayAddForm {
     private Date endDate; // end date of workday
 	
     private Date dateAdded = new Date();
+    @NumberFormat(style = Style.NUMBER)
 	private int pauligAmount;
+    @NumberFormat(style = Style.NUMBER)
 	private int fazerAmount;
+    @NumberFormat(style = Style.NUMBER)
 	private int mercaAmount;
+    @NumberFormat(style = Style.NUMBER)
 	private int pahvitAmount;
+    @NumberFormat(style = Style.NUMBER)
 	private int akaaAmount;
+    @NumberFormat(style = Style.NUMBER)
 	private int keskoAmount;
+    @NumberFormat(style = Style.NUMBER)
 	private int otherAmount;
 	private String otherInfo;
 	
