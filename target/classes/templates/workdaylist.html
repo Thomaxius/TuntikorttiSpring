@@ -36,14 +36,11 @@
 
 	</div>
 
-<<<<<<< HEAD
-=======
 						
 
 			
 			
 	<h3 th:inline="text">Welcome, [[${#httpServletRequest.remoteUser}]]</h3>
->>>>>>> branch 'master' of http://github.com/Thomaxius/TuntikorttiSpring
     <table id="workdaysTable" class="table table-striped">
 		<tr>
 		    <th>Työvuoron alku</th>
@@ -83,7 +80,7 @@
     	<th>Yhteensä:</th>
     	<th id="totalHourCell"></th>
     	<th></th>
-<<<<<<< HEAD
+
     	<td class="bold" id="totalPauligCell"></td>
     	<td class="bold" id="totalFazerCell"></td>
     	<td class="bold" id="totalMercaCell"></td>
@@ -140,7 +137,6 @@
 			addTableRow("workdaysTable", totalObj	)
 			</script>
 	 
-=======
     	<th id="totalPauligCell"></th>
     	<th id="totalFazerCell"></th>
     	<th id="totalMercaCell"></th>
@@ -193,7 +189,5 @@
 			const totalObj = getTotals([[${workdays}]])
 			addTableRow("workdaysTable", totalObj	)
 			</script>
-	 <a href="/addworkday" class="btn btn-success">Add Workday</a>    	
->>>>>>> branch 'master' of http://github.com/Thomaxius/TuntikorttiSpring
 </body>
 </html>

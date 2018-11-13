@@ -9,7 +9,7 @@
     	<div class="header-wrapper">
 				<div class="header">
 				  <ul class="navigation">
-					<li><a href="/">Etusivu</a></li>
+					<li><a href="/workdaylist">Etusivu</a></li>
 				  <li class="dropdown">
 						<a href="javascript:void(0)" class="dropbtn">Lisää..</a>
 						<div class="dropdown-content">
@@ -20,7 +20,7 @@
 					<li sec:authorize="hasAuthority('ADMIN')"class="dropdown">
 					<a sec:authorize="hasAuthority('ADMIN')" href="javascript:void(0)" class="dropbtn">Hallinnoi..</a>
 					<div class="dropdown-content">
-					<a sec:authorize="hasAuthority('ADMIN')"href="/autolista">Hallinnoi autoja</a>
+					<a sec:authorize="hasAuthority('ADMIN')"href="/vehiclelist">Hallinnoi autoja</a>
 							</div>
 						</li>	
 				  </ul>

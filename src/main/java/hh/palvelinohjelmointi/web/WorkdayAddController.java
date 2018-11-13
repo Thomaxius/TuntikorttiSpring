@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Date;
-<<<<<<< HEAD
+
 import java.util.Optional;
-=======
->>>>>>> branch 'master' of http://github.com/Thomaxius/TuntikorttiSpring
+
 
 import javax.validation.Valid;
 
@@ -40,8 +39,7 @@ public class WorkdayAddController {
 			  }
 	    return "/addworkday";
 	}   
-    
-<<<<<<< HEAD
+
 	@RequestMapping (value="/editworkday/{id}")
 	public String editWorkday(@PathVariable("id") Long workdayId,Model model){
 		
@@ -91,45 +89,16 @@ public class WorkdayAddController {
 		    		workday.setOtherAmount(workdayaddform.getOtherAmount());
 		    		workday.setVehicle(workdayaddform.getVehicle());
 		    		saveWorkday(workday);
-=======
-	 @RequestMapping(value = "/addworkday", method = RequestMethod.POST)
-	    public String save(@Valid WorkdayAddForm workdayaddform, 
-	    		BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-	        if (!bindingResult.hasErrors()) { // validation errors
-	            Date workdayBegin = workdayaddform.getBeginDate();
-	            Date workdayEnd = workdayaddform.getEndDate();
-
-	            if (!UtilityClass.dateIsAfterDate(workdayBegin, workdayEnd)) {
-	                // Add the vehicle you want to send to the other method.
-	            	redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.workdayaddform", bindingResult);
-	                bindingResult.rejectValue("beginDate", "err.beginDate", "Aloitusaika ei voi olla lopetusajan jälkeen.");
-	                redirectAttributes.addFlashAttribute("vehicles", vehicleRepository.findAll());
-	                redirectAttributes.addFlashAttribute("workdayaddform", workdayaddform);
-	                return "redirect:/addworkday";    
-	            }
-    		Workday workday = new Workday();
-    		Vehicle vehicle = new Vehicle();
-    		workday.setBeginDate(workdayaddform.getBeginDate());
-    		workday.setEndDate(workdayaddform.getEndDate());
-    		workday.setAkaaAmount(workdayaddform.getAkaaAmount());
-    		workday.setPahvitAmount(workdayaddform.getPahvitAmount());
-    		workday.setPauligAmount(workdayaddform.getPauligAmount());
-    		workday.setFazerAmount(workdayaddform.getFazerAmount());
-    		workday.setKeskoAmount(workdayaddform.getKeskoAmount());
-    		workday.setMercaAmount(workdayaddform.getMercaAmount());
-    		workday.setOtherAmount(workdayaddform.getOtherAmount());
-    		workday.setVehicle(workdayaddform.getVehicle());
-    		workdayRepository.save(workday);
->>>>>>> branch 'master' of http://github.com/Thomaxius/TuntikorttiSpring
-    	}
-    	else {
-    		redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.workdayaddform", bindingResult);
-    		redirectAttributes.addFlashAttribute("vehicles", vehicleRepository.findAll());
-            redirectAttributes.addFlashAttribute("workdayaddform", workdayaddform);
-            return "redirect:/addworkday";    
-    	}
-    	return "redirect:/workdaylist";    	
-    }    
+	        }
+        	else {
+        		redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.workdayaddform", bindingResult);
+        		redirectAttributes.addFlashAttribute("vehicles", vehicleRepository.findAll());
+                redirectAttributes.addFlashAttribute("workdayaddform", workdayaddform);
+                return "redirect:/addworkday";    
+        	}
+        	return "redirect:/workdaylist";    	
+        }   
+ 
 	 
 	    public String saveWorkday(Workday workday) {
 	    	workdayRepository.save(workday);
