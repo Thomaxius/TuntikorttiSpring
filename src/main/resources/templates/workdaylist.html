@@ -68,8 +68,8 @@
  		    <td th:text="${workday.keskoAmount}"></td>
  		    <td th:text="${workday.otherAmount}"></td>
  		    <td th:text="${workday.otherInfo}"></td>
- 		    <td><a th:href="@{/editworkday/{id}(id=${workday.id})}">Edit</a></td>    
- 			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/deleteworkday/{id}(id=${workday.id})}">Delete</a></td>	
+ 		    <td><a th:href="@{/editworkday/{id}(id=${workday.id})}">Muokkaa</a></td>    
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/deleteworkday/{id}(id=${workday.id})}">Poista</a></td>	
     	</tr>
     	<tr id="totalRow">
     	

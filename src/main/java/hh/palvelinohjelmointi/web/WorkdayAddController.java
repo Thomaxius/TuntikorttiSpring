@@ -60,7 +60,7 @@ public class WorkdayAddController {
 	}  
 	
 	 @RequestMapping(value = "addworkday")
-	    public String save(@Valid WorkdayAddForm workdayaddform, 
+	    public String addworkday(@Valid WorkdayAddForm workdayaddform, 
 	    		BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 	        if (!bindingResult.hasErrors()) { // validation errors
 	            Date workdayBegin = workdayaddform.getBeginDate();
