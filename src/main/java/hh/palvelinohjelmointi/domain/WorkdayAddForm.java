@@ -32,7 +32,8 @@ public class WorkdayAddForm {
     private Date endDate; // end date of workday
 	
     private Date dateAdded = new Date();
-    @NumberFormat(style = Style.NUMBER)
+    @NumberFormat(style = Style.NUMBER) /* If user has an old browser, the html type="number" 
+    doesn't show up, allowing him to post strings to database. This is why we have this check. */
 	private int pauligAmount;
     @NumberFormat(style = Style.NUMBER)
 	private int fazerAmount;
