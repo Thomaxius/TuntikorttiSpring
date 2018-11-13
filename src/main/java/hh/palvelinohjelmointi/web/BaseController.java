@@ -24,14 +24,12 @@ public class BaseController {
 	@Autowired
 	private VehicleRepository vehicleRepository;
 	
-	// Login page
     @RequestMapping(value="/login")
     public String login() {	
         return "login";
     }	
-
     
-    @RequestMapping(value="/workdaylist")
+    @RequestMapping(value={"", "/", "workdaylist"})
     public String workdayList(Model model) {	
         model.addAttribute("workdays", workdayRepository.findAll());
         return "workdaylist";
