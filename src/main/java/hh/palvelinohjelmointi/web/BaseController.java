@@ -51,12 +51,18 @@ public class BaseController {
      public @ResponseBody Optional<Workday> findWorkdayRest(@PathVariable("id") Long workdayId) {	
     	return workdayRepository.findById(workdayId);
     }
-
+ 	
+     @PreAuthorize("hasAuthority('ADMIN')")
+     @RequestMapping(value = "/deleteworkday/{id}", method = RequestMethod.GET)
+     public String deleteWorkday(@PathVariable("id") Long workdayId, Model model) {
+     	workdayRepository.deleteById(workdayId);
+         return "redirect:../workdaylist";
+     }     
 	
     @PreAuthorize("hasAuthority('ADMIN')")
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteWorkday(@PathVariable("id") Long workdayId, Model model) {
-    	workdayRepository.deleteById(workdayId);
-        return "redirect:../workdaylist";
+    @RequestMapping(value = "/deletevehicle/{id}", method = RequestMethod.GET)
+    public String deleteVehicle(@PathVariable("id") Long vehicle, Model model) {
+    	vehicleRepository.deleteById(vehicle);
+        return "redirect:../vehiclelist";
     }     
 }

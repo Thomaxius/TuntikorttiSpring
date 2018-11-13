@@ -31,7 +31,7 @@
 			  </div>
 		<div class="content-wrapper">
 				<div class="content">
-	<h1>Kaikki työvuorot</h1>
+	<h1>Kaikki ajoneuvot</h1>
 		<div class="col-md-4" style="padding:20px 0">
 
 	</div>
@@ -51,7 +51,7 @@
     		<td th:text="${vehicle.regNo}"></td>
     		<td th:text="${vehicle.dateAdded}"></td>
  		    <td><a th:href="@{/editvehicle/{id}(id=${vehicle.vehicleid})}">Muokkaa</a></td>    
- 			<td>Poista</a></td>	
+ 			<td><a th:href="@{/deletevehicle/{id}(id=${vehicle.vehicleid})}">Poista</a></td>	
     	</tr>
 	 </table>
 	</div>
