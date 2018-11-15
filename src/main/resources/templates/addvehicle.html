@@ -34,14 +34,14 @@
 				<div class="content">
 				<p class="center-title">Lisää ajoneuvo</p>
 				<br/>
-					<form th:object="${vehicleaddform}" th:action="@{/savevehicle}" action="#" method="post">
-					  	<label for="make">Auton malli</label>
-						<input type="text" id="make" th:field="*{make}" />
-						<font color="red"><p th:if="${#fields.hasErrors('make')}" th:errors="*{make}"></p></font>	
+					<form th:object="${vehicleaddform}" th:action="@{/savevehicle}" action="#" method="post">	
 						<div style="clear: both; display: block; height: 10px;"></div>
-					  	<label for="model">Auton merkki</label>
+					  	<label for="model">Auton malli</label>
 						<input type="text" id="model" th:field="*{model}" />
 						<font color="red"><p th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></p></font>					
+						<label for="make">Auton merkki</label>
+						<input type="text" id="make" th:field="*{make}" />
+						<font color="red"><p th:if="${#fields.hasErrors('make')}" th:errors="*{make}"></p></font>
 						<div style="clear: both; display: block; height: 10px;"></div>
 					  	<label for="regNo">Rekisterinumero</label>	
 						<input style="text-transform:uppercase" type="text" id="regNo" th:field="*{regNo}" />
